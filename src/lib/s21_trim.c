@@ -1,43 +1,50 @@
-// Возвращает новую строку, в которой удаляются все начальные и конечные вхождения набора заданных символов (trim_chars) из данной строки (src). В случае какой-либо ошибки следует вернуть значение NULL 
+#include <string.h>
+#include "../s21_string.h"
 
-void *s21_to_upper(const char *str) {
-  char *str_copy = malloc(s21_strlen(str) + 1);  // +1 для нулевого символа
-  void *result = S21_NULL;
-
-  int i;
-  for (i = 0; *str != '\0'; i++) {
-    str_copy[i] = *str;
-    str++;
-  }
-  str_copy[i] = '\0';
-
-  for (i = 0; str_copy[i] != '\0'; i++) {
-    if (str_copy[i] >= 'a' && str_copy[i] <= 'z') {
-      str_copy[i] -= 32;
+void *trim(const char *src, const char *trim_chars) {
+  char s[strlen(src)];
+  // считаем лишние символы и удаляем trim_chars с начала строки:
+  size_t i = 0, j, q = 0;
+  for (; q < strlen(trim_chars); q++)
+    while ((src[i] == trim_chars[q])) {
+      i++;
     }
-  }
 
-  result = (void *)str_copy;
-  return result;
-}
-
-void *s21_to_lower(const char *str) {
-  char *str_copy = malloc(s21_strlen(str) + 1);  // +1 для нулевого символа
-  void *result = S21_NULL;
-
-  int i;
-  for (i = 0; *str != '\0'; i++) {
-    str_copy[i] = *str;
-    str++;
-  }
-  str_copy[i] = '\0';
-
-  for (i = 0; str_copy[i] != '\0'; i++) {
-    if (str_copy[i] >= 'A' && str_copy[i] <= 'Z') {
-      str_copy[i] += 32;
+  int count_i_left = i;
+  if (i > 0) {
+    for (j = 0; j < strlen(src) && strchr(src, src[0]) != NULL; j++) {
+      s[j] = src[j + i];
     }
+    s[j] = '\0';
   }
+  printf("s1 = %s\n\n", s);
 
-  result = (void *)str_copy;
-  return result;
+  // считаем лишние символы и удаляем trim_chars с конца строки:
+  i = strlen(src) - 1;
+  q = 0;
+  int count_i_right = 0;
+  printf("strlen(trim_chars) = %ld\n i = %ld\n", strlen(trim_chars), i);
+  for (; q < strlen(trim_chars); q++)
+    while (src[i] == trim_chars[q]) {
+      i--;
+      count_i_right++;
+    }
+
+  printf("strlen(src) - count_i_left - count_i_right = %ld\n",
+         strlen(src) - count_i_left - count_i_right);
+  printf("strlen(s) - count_i_left - count_i_right = %ld\n",
+         strlen(s) - count_i_left - count_i_right);
+  printf("count_i_left - %d, count_i_right -%d\n\n", count_i_left,
+         count_i_right);
+
+  char res[i];
+
+  for (q = 0; q < (strlen(src) - count_i_left - count_i_right); q++) {
+    res[q] = s[q];
+    printf("res [%ld] = %c\n", q, res[q]);
+  }
+  res[q] = '\0';
+  printf("res = %s\n", res);
+  
+  return 0;
 }
