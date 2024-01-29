@@ -7,7 +7,7 @@ START_TEST(test_trim_1) {
   // arrange
   char s1[30] = "-?hello, world!";
   char s2[] = "!?-";
-  char need_result[] = trim(s1, s2); //"hello, world";
+  char need_result[] = "hello, world";
   
   // act
   char *result = s21_trim(s1, s2);
@@ -22,7 +22,7 @@ START_TEST(test_trim_2) {
   // arrange
   char s1[30] = "";
   char s2[] = "";
-  char *need_result = trim(s1, s2); //"";
+  char *need_result = "";
   
   // act
   char *result = s21_trim(s1, s2);
@@ -52,7 +52,7 @@ START_TEST(test_trim_4) {
   // arrange
   char s1[30] = "!!!abcdefghij!?!";
   char s2[] = "!?";
-  char need_result[] = trim(s1, s2); //"abcdefghij";
+  char need_result[] = "abcdefghij";
   
   // act
   char *result = s21_trim(s1, s2);
@@ -67,7 +67,7 @@ START_TEST(test_trim_5) {
   // arrange
   char s1[30] = "abc";
   char s2[] = "333";
-  char *need_result = trim(s1, s2); //"abc";
+  char *need_result = "abc";
   
   // act
   char *result = s21_trim(s1, s2);
@@ -82,7 +82,7 @@ START_TEST(test_trim_6) {
   // arrange
   char s1[30] = "hello, world!";
   char s2[] = "?!";
-  char *need_result = trim(s1, s2); //"hello, world";
+  char *need_result = "hello, world";
   
   // act
   char *result = s21_trim(s1, s2);
@@ -97,7 +97,7 @@ START_TEST(test_trim_7) {
   // arrange
   char *s1 = S21_NULL;
   char *s2 = S21_NULL;
-  char *need_result = trim(s1, s2); //S21_NULL;
+  char *need_result = S21_NULL;
   
   // act
   char *result = s21_trim(s1, s2);
@@ -112,7 +112,7 @@ START_TEST(test_trim_8) {
   // arrange
   char s1[30] = "";
   char s2[] = "";
-  char need_result[] = trim(s1, s2); //"";
+  char need_result[] = "";
   
   // act
   char *result = s21_trim(s1, s2);
@@ -127,7 +127,7 @@ START_TEST(test_trim_9) {
   // arrange
   char s1[] = " wtf ";
   char *s2 = S21_NULL;
-  char *need_result = trim(s1, s2); //" wtf ";
+  char *need_result = " wtf ";
   
   // act
   char *result = s21_trim(s1, s2);
@@ -142,7 +142,7 @@ START_TEST(test_trim_10) {
   // arrange
   char s1[] = " wtf ";
   char *s2 = "";
-  char *need_result = trim(s1, s2); //" wtf ";
+  char *need_result = " wtf ";
   
   // act
   char *result = s21_trim(s1, s2);
