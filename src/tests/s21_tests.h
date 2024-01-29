@@ -1,6 +1,6 @@
 #ifndef S21_TESTS_H
 
-#include <string.h>
+#include "../s21_string.h"
 #define S21_TESTS_H
 
 #define PRINT_MSG(msg) \

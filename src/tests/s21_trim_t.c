@@ -10,7 +10,7 @@ START_TEST(test_trim_1) {
   char need_result[] = "hello, world";
   
   // act
-  char *result = s21_trim(s1, s2);
+  char *result = trim(s1, s2);
   
   // assert
   ck_assert_pstr_eq(need_result, result);
@@ -25,7 +25,7 @@ START_TEST(test_trim_2) {
   char *need_result = "";
   
   // act
-  char *result = s21_trim(s1, s2);
+  char *result = trim(s1, s2);
   
   // assert
   ck_assert_pstr_eq(need_result, result);
@@ -40,7 +40,7 @@ START_TEST(test_trim_3) {
   char *need_result = trim(s1, s2); //S21_NULL;
   
   // act
-  char *result = s21_trim(s1, s2);
+  char *result = trim(s1, s2);
   
   // assert
   ck_assert_pstr_eq(need_result, result);
@@ -55,7 +55,7 @@ START_TEST(test_trim_4) {
   char need_result[] = "abcdefghij";
   
   // act
-  char *result = s21_trim(s1, s2);
+  char *result = trim(s1, s2);
   
   // assert
   ck_assert_pstr_eq(need_result, result);
@@ -70,7 +70,7 @@ START_TEST(test_trim_5) {
   char *need_result = "abc";
   
   // act
-  char *result = s21_trim(s1, s2);
+  char *result = trim(s1, s2);
   
   // assert
   ck_assert_pstr_eq(need_result, result);
@@ -85,7 +85,7 @@ START_TEST(test_trim_6) {
   char *need_result = "hello, world";
   
   // act
-  char *result = s21_trim(s1, s2);
+  char *result = trim(s1, s2);
   
   // assert
   ck_assert_pstr_eq(need_result, result);
@@ -100,7 +100,7 @@ START_TEST(test_trim_7) {
   char *need_result = S21_NULL;
   
   // act
-  char *result = s21_trim(s1, s2);
+  char *result = trim(s1, s2);
   
   // assert
   ck_assert_pstr_eq(need_result, result);
@@ -115,7 +115,7 @@ START_TEST(test_trim_8) {
   char need_result[] = "";
   
   // act
-  char *result = s21_trim(s1, s2);
+  char *result = trim(s1, s2);
   
   // assert
   ck_assert_pstr_eq(need_result, result);
@@ -130,7 +130,7 @@ START_TEST(test_trim_9) {
   char *need_result = " wtf ";
   
   // act
-  char *result = s21_trim(s1, s2);
+  char *result = trim(s1, s2);
   
   // assert
   ck_assert_pstr_eq(need_result, result);
@@ -145,7 +145,7 @@ START_TEST(test_trim_10) {
   char *need_result = " wtf ";
   
   // act
-  char *result = s21_trim(s1, s2);
+  char *result = trim(s1, s2);
   
   // assert
   ck_assert_pstr_eq(need_result, result);  
