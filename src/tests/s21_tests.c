@@ -20,7 +20,7 @@ static void print_head(void) {
       "\n\033["
       "39m");
   printf(
-      "\033[34m***\033[39m Тесты Decimal.h \033[34m***\033[39m "
+      "\033[34m***\033[39m Тесты s21_string.h \033[34m***\033[39m "
       "\033[32m monroebu / moryamel / tilmapat / typewria \033[39m "
       "\033[34m***\033[39m\n");
   printf(
