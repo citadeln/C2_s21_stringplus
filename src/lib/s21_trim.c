@@ -22,7 +22,7 @@ void *trim(const char *src, const char *trim_chars) {
     }
     s[j] = '\0';
   }
-  // printf("s1 = %s\n\n", s);
+  printf("s1 = %s\n", s);
 
   // считаем лишние символы и удаляем trim_chars с конца строки:
   i = strlen(src) - 1;
@@ -37,7 +37,9 @@ void *trim(const char *src, const char *trim_chars) {
 /*
   printf("strlen(src) - count_i_left - count_i_right = %ld\n",
          strlen(src) - count_i_left - count_i_right);
-  printf("strlen(s) - count_i_left - count_i_right = %ld\n",
+  printf("strlen(s) - count_i_left - count_i_r
+s1 = ��HX
+s2 = ��HXight = %ld\n",
          strlen(s) - count_i_left - count_i_right);
   printf("count_i_left - %d, co
   char res[i];unt_i_right -%d\n\n", count_i_left,
@@ -53,6 +55,9 @@ void *trim(const char *src, const char *trim_chars) {
   src[strlen(s) + 1] = '\0';
   //printf("res = %s\n", res);
 */
+  printf("s2 = %s\n", s);
+
+  printf("\033[34m____next test____\n""\n\033[""39m");
 
   return s;
 

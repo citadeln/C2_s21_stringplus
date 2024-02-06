@@ -27,7 +27,14 @@ all: $(LIB)
 
 $(LIB): $(OBJECTS)
 	@ar rc $(LIB) $(OBJECTS)
-	@ranlib $(LIB)TEST_NAME
+	@ranlib $(LIB)
+	@echo;
+
+$(BUILD_DIR)/%.o: %.c
+	@mkdir -p $(@D)
+	@$(CC) $(CFLAGS) -c -o $@ $<
+
+#auto
 test_build: clean_all $(LIB)
 	@mkdir -p $(BUILD_DIR)
 	@$(CC) $(CFLAGS) $(TEST_CFILES) ./$(LIB) -o $(BUILD_DIR)/$(TEST_NAME) $(TEST_FLAGS)
