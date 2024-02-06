@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS=-std=c11 -Wall -Wextra -Werror
 BUILD_DIR=./build
-LIB=s21_decimal.a
+LIB=s21_string.a
 
 CFILES=$(shell find lib -name '*.c')
 HFILES=$(shell find lib -name '*.h')
@@ -27,14 +27,7 @@ all: $(LIB)
 
 $(LIB): $(OBJECTS)
 	@ar rc $(LIB) $(OBJECTS)
-	@ranlib $(LIB)
-	@echo;
-
-$(BUILD_DIR)/%.o: %.c
-	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) -c -o $@ $<
-
-#auto
+	@ranlib $(LIB)TEST_NAME
 test_build: clean_all $(LIB)
 	@mkdir -p $(BUILD_DIR)
 	@$(CC) $(CFLAGS) $(TEST_CFILES) ./$(LIB) -o $(BUILD_DIR)/$(TEST_NAME) $(TEST_FLAGS)
