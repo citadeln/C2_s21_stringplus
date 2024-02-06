@@ -4,6 +4,7 @@
 #include "../s21_string.h"
 
 void *trim(const char *src, const char *trim_chars) {
+
   // считаем лишние символы и удаляем trim_chars с начала строки:
   size_t i = 0, q = 0;
   for (; q < strlen(trim_chars); q++)
@@ -11,10 +12,11 @@ void *trim(const char *src, const char *trim_chars) {
       i++;
     }
 
-  size_t j = 0;
   //int count_i_left = i;
-  if (i > 0) {
-    char s[strlen(src)];
+  size_t j = 0;
+  char *s = malloc(strlen(src) + 1);
+
+  if (i > 0) {  
     for (; j < strlen(src) && strchr(src, src[0]) != NULL; j++) {
       s[j] = src[j + i];
     }
@@ -37,19 +39,21 @@ void *trim(const char *src, const char *trim_chars) {
          strlen(src) - count_i_left - count_i_right);
   printf("strlen(s) - count_i_left - count_i_right = %ld\n",
          strlen(s) - count_i_left - count_i_right);
-  printf("count_i_left - %d, count_i_right -%d\n\n", count_i_left,
+  printf("count_i_left - %d, co
+  char res[i];unt_i_right -%d\n\n", count_i_left,
          count_i_right);
 */
 
 /*
-  char res[i];
+  strncpy(src, s, strlen(src));
 
-  for (q = 0; q < (strlen(src) - count_i_left - count_i_right); q++) {
-    res[q] = s[q];
-    printf("res [%ld] = %c\n", q, res[q]);
-  }
-  res[q] = '\0';
-  printf("res = %s\n", res);
-  */
-  return 0;
+  //for (q = 0; q < (strlen(src) - count_i_left - count_i_right); q++)
+  //  src[q] = s[q];
+
+  src[strlen(s) + 1] = '\0';
+  //printf("res = %s\n", res);
+*/
+
+  return s;
+
 }
