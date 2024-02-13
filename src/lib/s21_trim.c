@@ -5,23 +5,29 @@
 
 void *trim(const char *src, const char *trim_chars) {
 
+  printf("src = %s \t trim_chars = %s\n", src, trim_chars); 
+
   // считаем лишние символы и удаляем trim_chars с начала строки:
-  size_t i = 0, q = 0;
+  size_t i = 1, q = 0;
   for (; q < strlen(trim_chars); q++)
     while ((src[i] == trim_chars[q])) {
       i++;
     }
 
   //int count_i_left = i;
-  size_t j = 0;
-  char *s = malloc(strlen(src) + 1);
+  char *s = calloc(strlen(src) + 1, sizeof(char));
+  //s = "";
+  printf("strlen(trim_chars) = %ld\tstrlen(src) = %ld\t i = %ld\t s = %s\n", strlen(trim_chars), strlen(src), i, s);
 
-  if (i > 0) {  
-    for (; j < strlen(src) && strchr(src, src[0]) != NULL; j++) {
-      s[j] = src[j + i];
-    }
-    s[j] = '\0';
+  size_t j = 0;
+
+  for (int k = 0; j + i < strlen(src) && strchr(src, src[0]) != NULL; j++, k++) {
+      printf("s = %s\n", s);
+      s[k] = src[j + i];
+      printf("s = %s\n", s);
   }
+  
+  s[j] = '\0';
   printf("s1 = %s\n", s);
 
   // считаем лишние символы и удаляем trim_chars с конца строки:
