@@ -37,7 +37,7 @@ START_TEST(test_trim_3) {
   // arrange
   char *s1 = S21_NULL;
   char s2[] = "";
-  char *need_result = trim(s1, s2); //S21_NULL;
+  char *need_result = S21_NULL;
   
   // act
   char *result = trim(s1, s2);
@@ -125,9 +125,9 @@ END_TEST
 
 START_TEST(test_trim_9) {
   // arrange
-  char s1[] = " wtf ";
+  char s1[] = " fufu ";
   char *s2 = S21_NULL;
-  char *need_result = " wtf ";
+  char *need_result = " fufu ";
   
   // act
   char *result = trim(s1, s2);
@@ -140,9 +140,9 @@ END_TEST
 
 START_TEST(test_trim_10) {
   // arrange
-  char s1[] = " wtf ";
+  char s1[] = " fufu ";
   char *s2 = "";
-  char *need_result = " wtf ";
+  char *need_result = " fufu ";
   
   // act
   char *result = trim(s1, s2);
