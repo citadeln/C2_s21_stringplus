@@ -34,7 +34,6 @@ void *trim(const char *src, const char *trim_chars) {
       // printf("s = %s\n", s);
     }
 
-    s[j] = '\0';
     printf("i = %ld\t j = %ld\ts = %s\n", i, j, s);
     // считаем лишние символы и удаляем trim_chars с конца строки:
     int count_i_right = j - 1;
@@ -46,7 +45,7 @@ void *trim(const char *src, const char *trim_chars) {
             count_i_right--;
       }
     
-    printf("i = %ld\t j = %ld\ts = %s\n", i, j, s);
+    printf("i = %ld\t count_i_right = %d\ts = %s\n", i, count_i_right, s);
 
     s[count_i_right - i] = '\0';
 
