@@ -8,10 +8,10 @@ START_TEST(test_trim_1) {
   char s1[30] = "-?hello, world!";
   char s2[] = "!?-";
   char need_result[] = "hello, world";
-  
+
   // act
   char *result = trim(s1, s2);
-  
+
   // assert
   ck_assert_pstr_eq(need_result, result);
   if (result) free(result);
@@ -23,10 +23,10 @@ START_TEST(test_trim_2) {
   char s1[30] = "";
   char s2[] = "";
   char *need_result = "";
-  
+
   // act
   char *result = trim(s1, s2);
-  
+
   // assert
   ck_assert_pstr_eq(need_result, result);
   if (result) free(result);
@@ -38,10 +38,10 @@ START_TEST(test_trim_3) {
   char *s1 = S21_NULL;
   char s2[] = "";
   char *need_result = S21_NULL;
-  
+
   // act
   char *result = trim(s1, s2);
-  
+
   // assert
   ck_assert_pstr_eq(need_result, result);
   if (result) free(result);
@@ -53,10 +53,10 @@ START_TEST(test_trim_4) {
   char s1[30] = "!!!abcdefghij!?!";
   char s2[] = "!?";
   char need_result[] = "abcdefghij";
-  
+
   // act
   char *result = trim(s1, s2);
-  
+
   // assert
   ck_assert_pstr_eq(need_result, result);
   if (result) free(result);
@@ -68,10 +68,10 @@ START_TEST(test_trim_5) {
   char s1[30] = "abc";
   char s2[] = "333";
   char *need_result = "abc";
-  
+
   // act
   char *result = trim(s1, s2);
-  
+
   // assert
   ck_assert_pstr_eq(need_result, result);
   if (result) free(result);
@@ -83,10 +83,10 @@ START_TEST(test_trim_6) {
   char s1[30] = "hello, world!";
   char s2[] = "?!";
   char *need_result = "hello, world";
-  
+
   // act
   char *result = trim(s1, s2);
-  
+
   // assert
   ck_assert_pstr_eq(need_result, result);
   if (result) free(result);
@@ -98,10 +98,10 @@ START_TEST(test_trim_7) {
   char *s1 = S21_NULL;
   char *s2 = S21_NULL;
   char *need_result = S21_NULL;
-  
+
   // act
   char *result = trim(s1, s2);
-  
+
   // assert
   ck_assert_pstr_eq(need_result, result);
   if (result) free(result);
@@ -113,10 +113,10 @@ START_TEST(test_trim_8) {
   char s1[30] = "";
   char s2[] = "";
   char need_result[] = "";
-  
+
   // act
   char *result = trim(s1, s2);
-  
+
   // assert
   ck_assert_pstr_eq(need_result, result);
   if (result) free(result);
@@ -128,10 +128,10 @@ START_TEST(test_trim_9) {
   char s1[] = " fufu ";
   char *s2 = S21_NULL;
   char *need_result = " fufu ";
-  
+
   // act
   char *result = trim(s1, s2);
-  
+
   // assert
   ck_assert_pstr_eq(need_result, result);
   if (result) free(result);
@@ -143,12 +143,12 @@ START_TEST(test_trim_10) {
   char s1[] = " fufu ";
   char *s2 = "";
   char *need_result = " fufu ";
-  
+
   // act
   char *result = trim(s1, s2);
-  
+
   // assert
-  ck_assert_pstr_eq(need_result, result);  
+  ck_assert_pstr_eq(need_result, result);
   if (result) free(result);
 }
 END_TEST
@@ -165,7 +165,7 @@ Suite *trim_sc(void) {
   tcase_add_test(tc, test_trim_6);
   tcase_add_test(tc, test_trim_7);
   tcase_add_test(tc, test_trim_8);
-  //tcase_add_test(tc, test_trim_9);
+  // tcase_add_test(tc, test_trim_9);
   tcase_add_test(tc, test_trim_10);
 
   suite_add_tcase(suite, tc);

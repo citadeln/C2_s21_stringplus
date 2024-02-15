@@ -8,7 +8,7 @@ int main(void) {
   print_head();
 
   RUN_TEST(trim);
-  
+
   printf("\n");
   return 0;
 }
