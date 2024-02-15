@@ -15,15 +15,6 @@ int check_entrance(const char *src, const char *trim_chars, size_t i) {
   return i;
 }
 
-int check_end(const char *s, const char *trim_chars, size_t i) {
-  for (size_t q = 0; q < strlen(trim_chars); q++)
-    if (s[i] == trim_chars[q]) {
-      i--;
-      i = check_entrance(s, trim_chars, i);
-    }
-  return i;
-}
-
 void *trim(const char *src, const char *trim_chars) {
   printf("src = %s \t trim_chars = %s\n", src, trim_chars);
   if (src == S21_NULL)
@@ -44,20 +35,21 @@ void *trim(const char *src, const char *trim_chars) {
     }
 
     s[j] = '\0';
-    printf("s1 = %s\n", s);
-
+    printf("i = %ld\t j = %ld\ts = %s\n", i, j, s);
+    
     // считаем лишние символы и удаляем trim_chars с конца строки:
-    // printf("strlen(trim_chars) = %ld\n i = %ld\n", strlen(trim_chars), i);
-
-    j = check_end(s, trim_chars, j - 1);
-    /*
-    for (int count_i_right = j - 1, q=0; count_i_right >=0; count_i_right--)
-      while (s[j] == trim_chars[q]) {
-        j--;
-        q++;
+    int count_i_right = j - 1;
+    for (int q=0; count_i_right >=0; count_i_right--)
+      while (s[count_i_right] == trim_chars[q]) {
+        count_i_right--;
+        for (size_t q = 0; q < strlen(trim_chars); q++)
+          if (s[count_i_right] == trim_chars[q])
+            count_i_right--;
       }
-    */
-    s[j] = '\0';
+    
+    printf("i = %ld\t j = %ld\ts = %s\n", i, j, s);
+
+    s[count_i_right - i] = '\0';
 
     printf("s2 = %s\n", s);
 
@@ -69,25 +61,3 @@ void *trim(const char *src, const char *trim_chars) {
     return s;
   }
 }
-
-/*
-  printf("strlen(src) - count_i_left - count_i_right = %ld\n",
-        strlen(src) - count_i_left - count_i_right);
-  printf("strlen(s) - count_i_left - count_i_r
-s1 = ��HX
-s2 = ��HXight = %ld\n",
-        strlen(s) - count_i_left - count_i_right);
-  printf("count_i_left - %d, co
-  char res[i];unt_i_right -%d\n\n", count_i_left,
-        count_i_right);
-*/
-
-/*
-  strncpy(src, s, strlen(src));
-
-  //for (q = 0; q < (strlen(src) - count_i_left - count_i_right); q++)
-  //  src[q] = s[q];
-
-  src[strlen(s) + 1] = '\0';
-  //printf("res = %s\n", res);
-*/
