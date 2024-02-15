@@ -57,8 +57,6 @@ void *trim(const char *src, const char *trim_chars) {
         q++;
       }
     */
-    printf("strlen(trim_chars) = %ld\tstrlen(src) = %ld\t i = %ld\t s = %s\n",
-           strlen(trim_chars), strlen(src), i, s);
     s[j] = '\0';
 
     printf("s2 = %s\n", s);
@@ -83,13 +81,13 @@ s2 = ��HXight = %ld\n",
   char res[i];unt_i_right -%d\n\n", count_i_left,
         count_i_right);
 */
-(s1
-  /*
-    strncpy(src, s, strlen(src));
 
-    //for (q = 0; q < (strlen(src) - count_i_left - count_i_right); q++)
-    //  src[q] = s[q];
+/*
+  strncpy(src, s, strlen(src));
 
-    src[strlen(s) + 1] = '\0';
-    //printf("res = %s\n", res);
-  */
+  //for (q = 0; q < (strlen(src) - count_i_left - count_i_right); q++)
+  //  src[q] = s[q];
+
+  src[strlen(s) + 1] = '\0';
+  //printf("res = %s\n", res);
+*/
