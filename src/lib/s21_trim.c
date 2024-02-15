@@ -3,6 +3,16 @@
 #include <string.h>
 #include "../s21_string.h"
 
+int check_entrance (const char *src, const char *trim_chars, size_t i) {
+    for (size_t q = 0; q < strlen(trim_chars); q++)
+      if (src[i] == trim_chars[q]) {
+        i++;
+        i = check_entrance(src, trim_chars, i);
+      }
+    return i;
+}
+
+
 void *trim(const char *src, const char *trim_chars) {
   printf("src = %s \t trim_chars = %s\n", src, trim_chars); 
   if (src == S21_NULL) return S21_NULL;
@@ -10,13 +20,16 @@ void *trim(const char *src, const char *trim_chars) {
     
 
     // считаем лишние символы и удаляем trim_chars с начала строки:
-    size_t i = 1, q = 0;
+    size_t i = check_entrance(src, trim_chars, 0);
+
+/*    
+    size_t i = 0, q = 0;
+    
     for (; q < strlen(trim_chars); q++)
       while ((src[i] == trim_chars[q])) {
         i++;
       }
-
-    //int count_i_left = i;
+*/
     char *s = calloc(strlen(src) + 1, sizeof(char));
     //s = "";
     printf("strlen(trim_chars) = %ld\tstrlen(src) = %ld\t i = %ld\t s = %s\n", strlen(trim_chars), strlen(src), i, s);
@@ -24,9 +37,9 @@ void *trim(const char *src, const char *trim_chars) {
     size_t j = 0;
 
     for (int k = 0; j + i < strlen(src); j++, k++) {
-        printf("s = %s\n", s);
+        //printf("s = %s\n", s);
         s[k] = src[j + i];
-        printf("s = %s\n", s);
+        //printf("s = %s\n", s);
     }
     
     s[j] = '\0';
