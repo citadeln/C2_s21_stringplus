@@ -122,7 +122,7 @@ START_TEST(test_trim_8) {
   if (result) free(result);
 }
 END_TEST
-/*
+
 START_TEST(test_trim_9) {
   // arrange
   char s1[] = " fufu ";
@@ -137,7 +137,7 @@ START_TEST(test_trim_9) {
   if (result) free(result);
 }
 END_TEST
-*/
+
 START_TEST(test_trim_10) {
   // arrange
   char s1[] = " fufu ";
@@ -165,7 +165,7 @@ Suite *trim_sc(void) {
   tcase_add_test(tc, test_trim_6);
   tcase_add_test(tc, test_trim_7);
   tcase_add_test(tc, test_trim_8);
-  // tcase_add_test(tc, test_trim_9);
+  tcase_add_test(tc, test_trim_9);
   tcase_add_test(tc, test_trim_10);
 
   suite_add_tcase(suite, tc);
