@@ -3,7 +3,6 @@
 // случае какой-либо ошибки следует вернуть значение NULL
 
 #include <string.h>
-
 #include "../s21_string.h"
 
 int check_entrance(const char *src, const char *trim_chars, size_t i) {
@@ -43,7 +42,7 @@ void *trim(const char *src, const char *trim_chars) {
 
       // указывает на последний символ (его порядковый номер в строке)
       size_t count_i_right = check_end(s, trim_chars, j - 1);
-      
+
       s[count_i_right + 1] = '\0';
     }
     return s;
