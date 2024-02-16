@@ -20,7 +20,7 @@ int check_end(const char *s, const char *trim_chars, size_t j) {
   for (size_t q = 0; q < strlen(trim_chars); q++) {
     printf("(count_i_right (j) = %ld\n", j);
     if (s[j] == trim_chars[q]) {
-      j--;strncpy(s, src, strlen(src));
+      j--;
       j = check_end(s, trim_chars, j);
     }
   }
