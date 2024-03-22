@@ -9,7 +9,7 @@ START_TEST(memcmp_1) {
   int n2 = s21_memcmp(s1, s2, n);
   n2 = n2 > 0 ? 1 : n2 == 0 ? 0 : -1;
   ck_assert_int_eq(n1, n2);
-}ваярчапот
+}
 END_TEST
 
 START_TEST(memcmp_2) {
