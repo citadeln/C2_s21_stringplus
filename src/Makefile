@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-std=c11 -Wall -Wextra -Werror
+CFLAGS=-std=c11 -Wall -Wextra -Werror -g
 BUILD_DIR=./build
 LIB=s21_string.a
 
@@ -79,7 +79,7 @@ gcovm:
 
 val: test_build
 	valgrind -s --leak-check=full --show-leak-kinds=all --track-origins=yes $(BUILD_DIR)/$(TEST_NAME)
-	@$(MAKE) clean_all >/dev/null
+	@$(MAKE) clean_all
 
 check: val
 	cppcheck --enable=all --suppress=missingIncludeSystem .
@@ -92,12 +92,7 @@ style:
 	cp ../materials/linters/.clang-format .
 	find . -name '*.[ch]' | xargs clang-format -i || true
 	rm .clang-format
-
-debug: clean_all
-	@$(MAKE) $(LIB) CFLAGS="$(DEBUG_FLAG)" >/dev/null
-	@$(CC) $(DEBUG_FLAG) $(DEBUG_DIR)/*.c -L. -l:$(LIB) -o $(DEBUG_DIR)/$(DEBUG_NAME) -lm
-	@echo;$(DEBUG_DIR)/$(DEBUG_NAME);echo;
-
+	
 clean_gcovr:
 	@rm -f *.gcda *.gcno $(BUILD_DIR)/*.gcda $(BUILD_DIR)/*.gcno $(BUILD_DIR)/$(TEST_NAME)
 
